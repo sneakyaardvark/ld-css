@@ -1,0 +1,411 @@
+/*from codepen https://codepen.io/IMJ/pen/JjaXmjR */
+body {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tank {
+	display: flex;
+	align-items: flex-end;
+	border: 10px solid darkblue;
+	width: 50vw;
+	height: 50vh;
+}
+
+.water {
+	position: relative;
+	height: 80%;
+	width: 100%;
+	overflow: hidden;
+	max-width: 100%;
+	background-color: aqua;
+}
+
+.fish {
+	position: absolute;
+	width: 3rem;
+	height: 3rem;
+	background: red linear-gradient(red, blue);
+	clip-path: polygon(0% 50%, 80% 0%, 100% 20%, 100% 80%, 80% 100%);
+	z-index: 1;
+}
+
+.fish_wrapper:nth-child(1) .fish {
+	background: black linear-gradient(90deg, white, black, white, black);
+}
+
+.fish_wrapper:nth-child(1):after {
+	background: black linear-gradient(black, goldenrod);
+}
+
+.fish_wrapper:nth-child(2) .fish {
+	background: black linear-gradient(90deg, white, black, goldenrod, black);
+}
+
+.fish_wrapper:nth-child(2):after {
+	background: black linear-gradient(90deg, white, white, goldenrod);
+}
+
+.fish_wrapper:nth-child(3) .fish {
+	background-color: hsla(0, 100%, 50%, 1);
+	background-image: radial-gradient(
+			at 40% 20%,
+			hsla(28, 100%, 74%, 1) 0px,
+			transparent 50%
+		),
+		radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
+		radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
+		radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+}
+
+.fish_wrapper:nth-child(3):after {
+	background-color: hsla(0, 100%, 50%, 1);
+	background-image: radial-gradient(
+			at 40% 20%,
+			hsla(28, 100%, 74%, 1) 0px,
+			transparent 50%
+		),
+		radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
+		radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
+		radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
+		radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+}
+
+.fish_wrapper:nth-child(4) .fish {
+	background-color: #99aaff;
+	background-image: radial-gradient(
+			at 28% 16%,
+			hsla(17, 78%, 72%, 1) 0px,
+			transparent 50%
+		),
+		radial-gradient(at 94% 83%, hsla(130, 78%, 64%, 1) 0px, transparent 50%),
+		radial-gradient(at 38% 31%, hsla(67, 78%, 69%, 1) 0px, transparent 50%),
+		radial-gradient(at 58% 23%, hsla(11, 99%, 67%, 1) 0px, transparent 50%),
+		radial-gradient(at 56% 17%, hsla(1, 91%, 74%, 1) 0px, transparent 50%),
+		radial-gradient(at 86% 84%, hsla(78, 67%, 69%, 1) 0px, transparent 50%),
+		radial-gradient(at 48% 4%, hsla(91, 72%, 67%, 1) 0px, transparent 50%);
+}
+
+.fish_wrapper:nth-child(4):after {
+	background: black linear-gradient(90deg, white, white, greenyellow);
+}
+
+.fish_wrapper:nth-child(5) .fish {
+	background: black linear-gradient(90deg, slateblue, white, slateblue, black);
+}
+
+.fish_wrapper:nth-child(5):after {
+	background: black linear-gradient(90deg, white, white, slateblue);
+}
+
+.fish_wrapper {
+	position: absolute;
+}
+
+.fish_wrapper::before {
+	content: "";
+	position: absolute;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	background-color: white;
+	transform: translatey(1.25rem) translatex(-0.5rem);
+	animation: bubble 3s ease-in-out 0s infinite forwards;
+}
+
+.fish_wrapper::after {
+	content: "";
+	position: absolute;
+	width: 2rem;
+	height: 2rem;
+	top: 0.5rem;
+	right: -4rem;
+	background: red linear-gradient(red, blue);
+	clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+	z-index: 0;
+	animation: tail 1s ease-in-out 0s infinite forwards;
+}
+
+.fish_wrapper:nth-child(1) {
+	top: 5%;
+	left: 1%;
+	transform-origin: center;
+	animation: swim1 15s ease 0s infinite forwards;
+}
+
+.fish_wrapper:nth-child(2) {
+	top: 50%;
+	left: 20%;
+	animation: swim2 15s linear 0s infinite forwards;
+}
+
+.fish_wrapper:nth-child(3) {
+	top: 30%;
+	left: 60%;
+	animation: swim3 15s linear 0s infinite forwards;
+}
+
+.fish_wrapper:nth-child(4) {
+	top: 80%;
+	left: 85%;
+	animation: swim4 15s linear 0s infinite forwards;
+}
+
+.fish_wrapper:nth-child(5) {
+	top: 55%;
+	left: 5%;
+	animation: swim5 15s linear 0s infinite forwards;
+}
+
+@keyframes swim1 {
+	0% {
+		left: 5%;
+		top: 5%;
+		transform: rotatey(0deg);
+	}
+	10% {
+		transform: rotatey(180deg);
+	}
+
+	25% {
+		top: 10%;
+	}
+
+	50% {
+		left: 95%;
+	}
+
+	75% {
+		top: 2%;
+	}
+
+	100% {
+		left: 5%;
+		top: 5%;
+	}
+}
+
+@keyframes swim2 {
+	0% {
+		top: 50%;
+		left: 20%;
+	}
+	10% {
+		left: 10%;
+		transform: rotatey(90deg);
+	}
+
+	15% {
+		transform: rotatey(180deg);
+	}
+
+	25% {
+		top: 35%;
+	}
+
+	45% {
+		transform: rotatey(180deg);
+	}
+
+	50% {
+		left: 90%;
+		transform: rotatey(90deg);
+	}
+
+	55% {
+		transform: rotatey(0deg);
+	}
+
+	75% {
+		top: 65%;
+	}
+
+	100% {
+		left: 20%;
+		top: 50%;
+	}
+}
+
+@keyframes swim3 {
+	0% {
+		left: 60%;
+		top: 30%;
+	}
+
+	25% {
+		top: 20%;
+		transform: rotatey(0deg);
+	}
+
+	30% {
+		top: 30%;
+		left: 5%;
+		transform: rotatey(90deg);
+	}
+
+	35% {
+		transform: rotatey(180deg);
+	}
+
+	75% {
+		top: 40%;
+		transform: rotatey(180deg);
+	}
+
+	80% {
+		left: 90%;
+		transform: rotatey(90deg);
+	}
+
+	85% {
+		transform: rotatey(0deg);
+	}
+
+	100% {
+		left: 60%;
+		top: 30%;
+	}
+}
+
+@keyframes swim4 {
+	0% {
+		left: 85%;
+		top: 80%;
+	}
+
+	25% {
+		top: 90%;
+		/* 		transform: rotatez(0deg); */
+	}
+
+	30% {
+		top: 85%;
+		/* 		transform: rotatez(-90deg); */
+	}
+
+	35% {
+		top: 90%;
+		/* 		transform: rotatez(0deg); */
+	}
+
+	50% {
+		transform: rotatey(0deg);
+	}
+
+	60% {
+		left: 5%;
+		transform: rotatey(90deg);
+	}
+
+	65% {
+		transform: rotatey(180deg);
+	}
+
+	75% {
+		top: 40%;
+	}
+
+	83% {
+		transform: rotatey(180deg);
+	}
+	90% {
+		left: 98%;
+		transform: rotatey(90deg);
+	}
+
+	100% {
+		transform: rotatey(0deg);
+		left: 85%;
+		top: 80%;
+	}
+}
+
+@keyframes swim5 {
+	0% {
+		left: 5%;
+		top: 55%;
+		transform: rotatey(0deg);
+	}
+
+	10% {
+		left: 8%;
+		transform: rotatey(180deg);
+	}
+
+	25% {
+		top: 60%;
+	}
+
+	45% {
+		transform: rotatey(180deg);
+	}
+	50% {
+		left: 95%;
+		transform: rotatey(90deg);
+	}
+
+	60% {
+		transform: rotatey(0deg) rotatez(0deg);
+	}
+
+	75% {
+		top: 2%;
+		transform: rotatez(90deg);
+	}
+
+	80% {
+		transform: rotatez(-45deg);
+	}
+
+	100% {
+		left: 5%;
+		top: 55%;
+		transform: rotatez(0deg);
+	}
+}
+
+@keyframes bubble {
+	from {
+		transform: translatey(1.25rem) translatex(-0.5rem);
+	}
+
+	to {
+		transform: translatey(-25.25rem) translatex(-0.5rem);
+	}
+}
+
+@keyframes tail {
+	0% {
+		transform: rotatey(0deg);
+	}
+
+	33.33% {
+		transform: rotatey(45deg);
+	}
+
+	66.66% {
+		transform: rotatey(-45deg);
+	}
+
+	100% {
+		transform: rotatey(0deg);
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.tank {
+		display: flex;
+		align-items: flex-end;
+		border: 10px solid darkblue;
+		width: 100vw;
+		height: 60vh;
+	}
+}
