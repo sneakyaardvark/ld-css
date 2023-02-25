@@ -1,0 +1,23 @@
+.anim-test {
+    font-size: 2em;
+    animation-duration: 3s;
+    animation-name: slide;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes slide {
+  from {
+    margin-left: 50vw;
+    width: 100%;
+  }
+
+    50% {
+        font-size: 75%;
+    }
+
+  to {
+    margin-left: 0;
+    width: 100%;
+  }
+}
